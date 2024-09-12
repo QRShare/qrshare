@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@test.com',
             'password' => bcrypt('password'),
         ]);
+
+        $this->call([
+            PageSeeder::class,
+        ]);
     }
 }

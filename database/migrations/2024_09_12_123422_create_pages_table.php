@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255); // Definindo comprimento máximo
-            $table->text('description');
-            $table->string('slug', 255)->unique(); // Definindo comprimento máximo
+            $table->string('title', 255);
+            $table->text('description')->nullable();
+            $table->string('slug', 255)->unique();
             $table->boolean('is_active')->default(true);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Adicionando onDelete cascade
-            $table->timestamp('date')->nullable(); // Permitindo nulo se necessário
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->timestamp('date')->nullable();
+            $table->json('images')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
-            // Adicionando índices para colunas frequentemente consultadas
             $table->index('title');
             $table->index('slug');
             $table->index('is_active');

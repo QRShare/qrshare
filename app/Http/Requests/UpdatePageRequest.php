@@ -11,7 +11,7 @@ class UpdatePageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class UpdatePageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
+            'slug' => 'sometimes|required|string|max:255|unique:pages,slug,'.$this->route('page')->id,
+            'is_active' => 'boolean',
+            'user_id' => 'required|exists:users,id',
+            'date' => 'nullable|date',
+            'images' => 'nullable|array',
         ];
     }
 }

@@ -13,15 +13,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return response()->json('testando', 201);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return response()->json(Page::paginate(10), 200);
     }
 
     /**
@@ -29,7 +21,9 @@ class PageController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        return response()->json($request->all(), 201);
+        $page = Page::create($request->validated());
+
+        return response()->json($page, 201);
     }
 
     /**
@@ -37,15 +31,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Page $page)
-    {
-        //
+        return response()->json($page, 200);
     }
 
     /**
@@ -53,7 +39,9 @@ class PageController extends Controller
      */
     public function update(UpdatePageRequest $request, Page $page)
     {
-        //
+        $page->update($request->validated());
+
+        return response()->json($page, 200);
     }
 
     /**
@@ -61,6 +49,15 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        try {
+            $page->delete();
+
+            return response()->json(null, 204);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Erro ao excluir a página',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
     }
 }

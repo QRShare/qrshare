@@ -35,7 +35,7 @@ Route::prefix('auth')->group(function () {
 Route::prefix('user')
     ->middleware(['auth:sanctum'])
     ->group(function () {
-        Route::get('/user', function (Request $request) {
+        Route::get('/', function (Request $request) {
             return response()->json($request->user(), 200);
         });
     });
@@ -43,5 +43,9 @@ Route::prefix('user')
 Route::prefix('pages')
     ->middleware(['auth:sanctum'])
     ->group(function () {
-        Route::resource('/', PageController::class);
+        Route::get('/', [PageController::class, 'index']);
+        Route::post('/', [PageController::class, 'store']);
+        Route::get('/{page}', [PageController::class, 'show']);
+        Route::put('/{page}', [PageController::class, 'update']);
+        Route::delete('/{page}', [PageController::class, 'destroy']);
     });
