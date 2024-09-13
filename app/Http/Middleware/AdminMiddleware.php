@@ -16,19 +16,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-
-            // Verifica se o e-mail do usuário é admin@qrshare.com.br
-            if ($user->email === 'admin@qrshare.com.br') {
-                return $next($request); // Se sim, continua a requisição
-            }
+        // Verificar se o usuário está autenticado e se o email é o permitido
+        if (Auth::check() && Auth::user()->email !== 'admin@qrshare.com.br') {
+            abort(404, 'Página não encontrada.');
         }
 
-        // Alternativamente, você pode usar:
-        abort(403, 'Unauthorized action.');
-
-        // Caso o e-mail não seja permitido, redireciona ou aborta a requisição
-        return redirect('/')->with('error', 'Unauthorized access.');
+        return $next($request); // Prosseguir com a requisição
     }
 }

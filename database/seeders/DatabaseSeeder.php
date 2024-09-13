@@ -29,10 +29,17 @@ class DatabaseSeeder extends Seeder
 
         $admin = User::create([
             'name' => 'Admin User',
-            'email' => 'admin@test.com',
+            'email' => 'admin@qrshare.com.br',
             'password' => bcrypt('password'),
         ]);
         $admin->assignRole('admin');
+
+        $user = User::create([
+            'name' => 'Victor da Silva',
+            'email' => 'vsilva@qrshare.com.br',
+            'password' => bcrypt('password'),
+        ]);
+        $user->assignRole('user');
 
         $this->call([PageSeeder::class]);
     }
