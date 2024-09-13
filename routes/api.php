@@ -16,7 +16,7 @@ Route::prefix('auth')->group(function () {
 
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
@@ -48,4 +48,25 @@ Route::prefix('pages')
         Route::get('/{page}', [PageController::class, 'show']);
         Route::put('/{page}', [PageController::class, 'update']);
         Route::delete('/{page}', [PageController::class, 'destroy']);
+    });
+
+Route::prefix('checkout')
+    // ->middleware(['auth:sanctum'])
+    ->group(function () {
+        Route::get('/', function (Request $request) {
+            $stripePriceId = 'price_deluxe_album';
+
+            $quantity = 1;
+
+            return $request->user()->checkout(
+                [$stripePriceId => $quantity],
+                [
+                    'success_url' => route('checkout-success'),
+                    'cancel_url' => route('checkout-cancel'),
+                ],
+            );
+        })->name('checkout');
+
+        Route::view('/success', 'checkout.success')->name('checkout-success');
+        Route::view('/cancel', 'checkout.cancel')->name('checkout-cancel');
     });
