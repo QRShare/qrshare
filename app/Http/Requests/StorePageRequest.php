@@ -24,7 +24,6 @@ class StorePageRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'slug' => 'required|string|max:255|unique:pages,slug',
             'is_active' => 'boolean',
             'user_id' => 'required|exists:users,id',
             'date' => 'nullable|date',
