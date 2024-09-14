@@ -29,7 +29,7 @@ class PageFactory extends Factory
             'user_id' => User::factory(),
             'date' => $this->faker->dateTime,
             'images' => $this->faker->randomElements([
-                'image1.jpg', 'image2.jpg', 'image3.jpg',
+                'https://picsum.photos/500', 'https://picsum.photos/500', 'https://picsum.photos/500',
             ], $count = 2),
         ];
     }
