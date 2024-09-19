@@ -5,9 +5,12 @@ namespace App\Livewire\Pages;
 use App\Models\Page;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Cards extends Component
 {
+    use WithPagination;
+
     #[Url('')]
     public Page $selected;
 
@@ -20,12 +23,12 @@ class Cards extends Component
 
     public function mount()
     {
-        $this->selected = Page::first();
+        $this->selected = Page::orderBy('updated_at', 'desc')->first();
     }
 
     public function render()
     {
-        $pages = Page::simplePaginate(5);
+        $pages = Page::orderBy('updated_at', 'desc')->simplePaginate(5);
 
         return view('livewire.pages.cards', [
             'pages' => $pages

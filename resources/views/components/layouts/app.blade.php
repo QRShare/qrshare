@@ -56,7 +56,17 @@
 
 <body class="flex items-start justify-center h-full bg-gray-50">
     <div class="flex items-center justify-center w-full max-w-full">
-        {{ $slot }}
+        <div class="relative flex flex-col flex-grow w-full min-h-screen antialiased bg-white">
+            <div class="flex w-full mx-auto max-w-7xl">
+                <livewire:components.header />
+            </div>
+
+            <div class="flex-1">
+                {{ $slot }}
+            </div>
+
+            <livewire:components.bottom-menu />
+        </div>
     </div>
 
     @stack('modals')

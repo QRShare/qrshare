@@ -7,7 +7,7 @@
             setInterval(() => {
                 this.calculateDiff();
             }, 1000);
-    
+
             // Escuta o evento 'timestamp-updated' disparado pelo Livewire
             window.addEventListener('timestamp-updated', event => {
                 this.timestamp = event.detail.timestamp;
@@ -32,37 +32,37 @@
         <!-- Anos -->
         <div class="text-center">
             <span x-text="diff.years" class="block font-bold"></span>
-            <span>anos</span>
+            <span class="text-xs">anos</span>
         </div>
 
         <!-- Meses -->
         <div class="text-center">
             <span x-text="diff.months" class="block font-bold"></span>
-            <span>meses</span>
+            <span class="text-xs">meses</span>
         </div>
 
         <!-- Dias -->
         <div class="text-center">
             <span x-text="diff.days" class="block font-bold"></span>
-            <span>dias</span>
+            <span class="text-xs">dias</span>
         </div>
 
         <!-- Horas -->
         <div class="text-center">
             <span x-text="diff.hours" class="block font-bold"></span>
-            <span>horas</span>
+            <span class="text-xs">horas</span>
         </div>
 
         <!-- Minutos -->
         <div class="text-center">
             <span x-text="diff.minutes" class="block font-bold"></span>
-            <span>minutos</span>
+            <span class="text-xs">minutos</span>
         </div>
 
         <!-- Segundos -->
         <div class="text-center">
             <span x-text="diff.seconds" class="block font-bold"></span>
-            <span>segundos</span>
+            <span class="text-xs">segundos</span>
         </div>
     </div>
 </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamp('date')->nullable();
+            $table->boolean('is_public')->default(true);
             $table->json('images')->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->index('title');
             $table->index('slug');
             $table->index('is_active');
+            $table->index('is_public');
             $table->index('user_id');
         });
     }

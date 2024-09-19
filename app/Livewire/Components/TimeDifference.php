@@ -15,6 +15,7 @@ class TimeDifference extends Component
     public function updated($timestamp)
     {
         $this->timestamp = $timestamp;
+        $this->getTimeDifference();
     }
 
     public function render()
@@ -26,7 +27,7 @@ class TimeDifference extends Component
     {
         if ($this->timestamp) {
             // Converte o timestamp para um objeto Carbon
-            $userTime = Carbon::createFromTimestamp($this->timestamp);
+            $userTime = Carbon::parse($this->timestamp);
             $now = Carbon::now();
 
             // Calcula a diferença
