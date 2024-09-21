@@ -28,7 +28,7 @@ class Cards extends Component
 
     public function render()
     {
-        $pages = Page::orderBy('updated_at', 'desc')->simplePaginate(5);
+        $pages = Page::orderBy('updated_at', 'desc')->simplePaginate(4);
 
         return view('livewire.pages.cards', [
             'pages' => $pages

@@ -9,6 +9,8 @@ use Livewire\Component;
 class TimeDifference extends Component
 {
     public string $timestamp; // Input do usuário
+    public string $bg_color;
+    public string $text_color;
 
 
     #[On('change-card')]

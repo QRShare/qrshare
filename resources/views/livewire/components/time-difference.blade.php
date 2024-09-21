@@ -7,7 +7,7 @@
             setInterval(() => {
                 this.calculateDiff();
             }, 1000);
-
+    
             // Escuta o evento 'timestamp-updated' disparado pelo Livewire
             window.addEventListener('timestamp-updated', event => {
                 this.timestamp = event.detail.timestamp;
@@ -28,41 +28,41 @@
             }
         }
     }" x-init="init"
-        class="flex items-center justify-between p-4 text-lg bg-white border rounded-lg bottom-1">
+        class="flex items-center justify-between p-4 text-lg {{ $bg_color }} {{ $text_color }} border rounded-lg bottom-1">
         <!-- Anos -->
         <div class="text-center">
             <span x-text="diff.years" class="block font-bold"></span>
-            <span class="text-xs">anos</span>
+            <span class="text-xs">Anos</span>
         </div>
 
         <!-- Meses -->
         <div class="text-center">
             <span x-text="diff.months" class="block font-bold"></span>
-            <span class="text-xs">meses</span>
+            <span class="text-xs">Meses</span>
         </div>
 
         <!-- Dias -->
         <div class="text-center">
             <span x-text="diff.days" class="block font-bold"></span>
-            <span class="text-xs">dias</span>
+            <span class="text-xs">Dias</span>
         </div>
 
         <!-- Horas -->
         <div class="text-center">
             <span x-text="diff.hours" class="block font-bold"></span>
-            <span class="text-xs">horas</span>
+            <span class="text-xs">Horas</span>
         </div>
 
         <!-- Minutos -->
         <div class="text-center">
             <span x-text="diff.minutes" class="block font-bold"></span>
-            <span class="text-xs">minutos</span>
+            <span class="text-xs">Minutos</span>
         </div>
 
         <!-- Segundos -->
         <div class="text-center">
             <span x-text="diff.seconds" class="block font-bold"></span>
-            <span class="text-xs">segundos</span>
+            <span class="text-xs">Segundos</span>
         </div>
     </div>
 </div>
