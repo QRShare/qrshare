@@ -9,15 +9,22 @@ use Livewire\Component;
 class TimeDifference extends Component
 {
     public string $timestamp; // Input do usuário
-    public string $bg_color;
-    public string $text_color;
 
+    public string $bg_color = '#ffffff';
+    public string $text_color = '#171717';
 
     #[On('change-card')]
     public function updated($timestamp)
     {
         $this->timestamp = $timestamp;
         $this->getTimeDifference();
+    }
+
+    #[On('colorUpdated')]
+    public function colorUpdated($bg_color, $text_color)
+    {
+        $this->bg_color = $bg_color;
+        $this->text_color = $text_color;
     }
 
     public function render()
@@ -46,7 +53,7 @@ class TimeDifference extends Component
                 'days' => $days,
                 'hours' => $hours,
                 'minutes' => $minutes,
-                'seconds' => $seconds
+                'seconds' => $seconds,
             ];
         }
 
@@ -56,7 +63,7 @@ class TimeDifference extends Component
             'days' => 0,
             'hours' => 0,
             'minutes' => 0,
-            'seconds' => 0
+            'seconds' => 0,
         ];
     }
 }

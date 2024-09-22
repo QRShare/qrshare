@@ -1,4 +1,4 @@
-<div class="container flex flex-row mx-auto mb-12 mt-28 gap-x-8">
+<div class="container flex flex-row h-full mx-auto mb-12 mt-28 gap-x-8">
     <div class="flex-1">
         <form wire:submit.prevent='submit'
             class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
@@ -6,17 +6,21 @@
                 <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div class="flex flex-row items-end col-span-full gap-x-6">
                         <div class="flex-1">
-                            <label for="slug" class="block text-sm font-medium leading-6 text-gray-900">Nome da
-                                Página</label>
+                            <label for="slug" class="block text-sm font-medium leading-6 text-gray-900">
+                                Nome da Página
+                            </label>
                             <div class="mt-2">
                                 <div
-                                    class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                                    class="relative flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                                     <label for="slug"
                                         class="flex items-center pl-3 text-gray-500 select-none sm:text-sm">{{
                                         config('app.url') }}/p/</label>
                                     <input type="text" name="slug" id="slug" wire:model.lazy='slug' autocomplete="slug"
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                         placeholder="julia-silva">
+                                    <div class="absolute bottom-0 text-xs text-red-400 translate-y-full">
+                                        @error('slug') {{ $message }} @enderror
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -25,56 +29,48 @@
                             <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Data</label>
                             <div class="mt-2">
                                 <div
-                                    class="flex pl-1 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                                    class="relative flex pl-1 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                                     <input type="datetime-local" name="date" id="date" wire:model.lazy='date'
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
+                                    <div class="absolute bottom-0 text-xs text-red-400 translate-y-full">
+                                        @error('date') {{ $message }} @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="flex flex-col gap-1">
-                            <input type="color" wire:model.lazy='dateBgColor'
-                                class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
-                                id="hs-color-input" title="Choose your color">
-                            <input type="color" wire:model.lazy='dateTextColor'
-                                class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
-                                id="hs-color-input" title="Choose your color">
                         </div>
                     </div>
 
                     <div class="flex flex-row items-end col-span-full gap-x-6">
                         <div class="flex-1">
                             <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Título</label>
-                            <div class="mt-2">
+                            <div class="relative mt-2">
                                 <input type="text" name="title" id="title" wire:model.lazy='title' autocomplete="title"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <div class="absolute bottom-0 text-xs text-red-400 translate-y-full">
+                                    @error('title') {{ $message }} @enderror
+                                </div>
                             </div>
                         </div>
-
-                        <input type="color" wire:model.lazy='dateTitleColor'
-                            class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
-                            id="hs-color-input" title="Choose your color">
                     </div>
 
                     <div class="flex flex-row items-end col-span-full gap-x-6">
                         <div class="flex-1">
                             <label for="description"
                                 class="block text-sm font-medium leading-6 text-gray-900">Mensagem</label>
-                            <div class="mt-2">
+                            <div class="relative mt-2">
                                 <textarea id="description" name="description" wire:model.lazy='description' rows="3"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                <div class="absolute bottom-0 text-xs text-red-400 translate-y-full">
+                                    @error('description') {{ $message }} @enderror
+                                </div>
                             </div>
                         </div>
-
-                        <input type="color" wire:model.lazy='dateDescriptionColor'
-                            class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
-                            id="hs-color-input" title="Choose your color">
                     </div>
 
                     <div class="col-span-full">
                         <label for="images" class="block text-sm font-medium leading-6 text-gray-900">Images</label>
                         <div
-                            class="flex justify-center px-6 py-10 mt-2 border border-dashed rounded-lg border-gray-900/25">
+                            class="relative flex justify-center px-6 py-10 mt-2 border border-dashed rounded-lg border-gray-900/25">
                             <div class="text-center">
                                 <svg class="w-12 h-12 mx-auto text-gray-300" viewBox="0 0 24 24" fill="currentColor"
                                     aria-hidden="true">
@@ -93,6 +89,57 @@
                                 </div>
                                 <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF de até 10MB</p>
                             </div>
+                            <div class="absolute bottom-0 text-xs text-red-400 translate-y-full">
+                                @error('images') {{ $message }} @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row flex-wrap justify-between gap-4 col-span-full">
+                        <div class="flex flex-col items-center justify-center">
+                            <label for="pageBgColor" class="block text-sm leading-6 text-gray-900">
+                                Fundo da Página
+                            </label>
+                            <input type="color" wire:model.live='pageBgColor' name="pageBgColor"
+                                class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
+                                id="pageBgColor" title="Choose your color">
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center">
+                            <label for="dateTextColor" class="block text-sm leading-6 text-gray-900">
+                                Texto Contador
+                            </label>
+                            <input type="color" wire:model.live='dateTextColor'
+                                class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
+                                id="dateTextColor" name="dateTextColor" title="Choose your color"
+                                wire:change="changeDateColor('bg')">
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center">
+                            <label for="dateBgColor" class="block text-sm leading-6 text-gray-900">
+                                Fundo do Contador
+                            </label>
+                            <input type="color" wire:model.live='dateBgColor' name="dateBgColor"
+                                class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
+                                id="dateBgColor" title="Choose your color" wire:change="changeDateColor('text')">
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center">
+                            <label for="titleTextColor" class="block text-sm leading-6 text-center text-gray-900">
+                                Cor do Título
+                            </label>
+                            <input type="color" wire:model.live='titleTextColor' name="titleTextColor"
+                                class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
+                                id="titleTextColor" title="Choose your color" wire:change="changeDateColor('text')">
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center">
+                            <label for="descriptionTextColor" class="block text-sm leading-6 text-gray-900">
+                                Cor da Messagem
+                            </label>
+                            <input type="color" wire:model.live='descriptionTextColor' name="descriptionTextColor"
+                                class="block p-1 bg-white border border-gray-200 rounded-full cursor-pointer h-9 w-9 disabled:opacity-50 disabled:pointer-events-none"
+                                id="descriptionTextColor" title="Choose your color">
                         </div>
                     </div>
                 </div>
@@ -109,27 +156,32 @@
         </form>
     </div>
     <div class="flex flex-1">
-        <div class="flex-1 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+        <div style="background-color: {{ $pageBgColor }}"
+            class="flex-1 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
             <div class="h-full px-4 py-6 overflow-auto sm:p-8">
-                @if($images)
+                @if ($images)
                 <img src="{{ asset($images[0]->temporaryUrl()) }}"
                     class="object-cover w-full mb-8 rounded-lg aspect-video">
                 @endif
 
-                @if($date)
-                <livewire:components.time-difference :timestamp="$date" bg_color="bg-[#B22222]"
-                    text_color="text-[{{ $dateTextColor }}]" />
+                @if ($date)
+                <livewire:components.time-difference :timestamp="$date" :bg_color="$dateBgColor"
+                    :text_color="$dateTextColor" />
                 @endif
 
-                @if($title)
-                <h3 class="mt-4 mb-2 text-2xl font-bold" style="color: '{{ $titleTextColor }}'">{{ $title }}</h3>
+                @if ($title)
+                <h3 class="mt-4 mb-2 text-2xl font-bold" style="color: {{ $titleTextColor }}">
+                    {{ $title }}
+                </h3>
                 @endif
 
-                @if($description)
-                <p class="text-['{{ $descriptionTextColor }}'']">{{ $description }}</p>
+                @if ($description)
+                <p style="color: {{ $descriptionTextColor }}">
+                    {{ $description }}
+                </p>
                 @endif
 
-                @if(!$images && !$date && !$title && !$description)
+                @if (!$images && !$date && !$title && !$description)
                 <div class="flex items-center justify-center flex-1 h-full">
                     <h3 class="text-gray-500">Preencha os campos para exibir a visualização.</h3>
                 </div>
@@ -137,5 +189,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

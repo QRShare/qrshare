@@ -41,6 +41,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole('user');
 
-        $this->call([PageSeeder::class]);
+        // $this->call([PageSeeder::class]);
     }
 }

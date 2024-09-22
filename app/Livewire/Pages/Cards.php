@@ -12,7 +12,7 @@ class Cards extends Component
     use WithPagination;
 
     #[Url('')]
-    public Page $selected;
+    public Page|null $selected;
 
     public function selectPage(Page $page)
     {

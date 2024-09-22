@@ -17,26 +17,14 @@ class Page extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'title',
-        'description',
-        'slug',
-        'is_active',
-        'user_id',
-        'date',
-        'images',
-    ];
+    protected $fillable = ['title', 'description', 'slug', 'is_active', 'user_id', 'date', 'images', 'date_bg_color', 'date_text_color', 'title_text_color', 'description_text_color', 'page_bg_color'];
 
     /**
      * Get the options for generating the slug.
      */
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
-        return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug')
-            ->slugsShouldBeNoLongerThan(50)
-            ->usingLanguage('pt-br');
+        return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug')->slugsShouldBeNoLongerThan(50)->usingLanguage('pt-br');
     }
 
     /**

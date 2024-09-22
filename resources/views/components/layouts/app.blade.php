@@ -54,7 +54,7 @@
     @livewireStyles
 </head>
 
-<body class="flex flex-col flex-grow min-h-screen bg-red-600/80">
+<body class="flex flex-col flex-grow h-full min-h-screen bg-gradient-to-bl from-indigo-500 via-purple-500 to-pink-500 ">
     <livewire:components.header />
 
     <div class="flex-1">

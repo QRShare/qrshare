@@ -21,6 +21,13 @@ return new class extends Migration
             $table->timestamp('date')->nullable();
             $table->boolean('is_public')->default(true);
             $table->json('images')->nullable();
+
+            $table->string('date_bg_color')->default('#ffffff');
+            $table->string('date_text_color')->default('#171717');
+            $table->string('title_text_color')->default('#171717');
+            $table->string('description_text_color')->default('#171717');
+            $table->string('page_bg_color')->default('#ffffff');
+
             $table->softDeletes();
             $table->timestamps();
 
