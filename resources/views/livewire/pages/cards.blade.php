@@ -5,7 +5,7 @@
         @foreach ($pages as $page)
         <div class="flex items-center overflow-hidden bg-white border rounded-lg shadow-sm border-neutral-200/60">
             <img class="object-cover w-1/3 h-full rounded-lg aspect-square"
-                src="{{ asset('storage/' . json_decode($page->images)[0]) }}" />
+                src="{{ json_decode($page->images)[0] ? asset('storage/' . json_decode($page->images)[0]) : asset('src/images/general/no-image.jpg') }}" />
             <div class="px-6 py-2">
                 <button wire:click="selectPage({{ $page->id }})" class="block mb-3 text-left">
                     <h5 class="text-xl font-bold leading-none tracking-tight line-clamp-2 text-neutral-900">
@@ -52,8 +52,8 @@
             @if ($selected)
             <div class="p-4">
                 @if ($selected->images)
-                <img src="{{ asset('storage/' . json_decode($selected->images)[0]) }}" alt="{{ $selected->title }}"
-                    class="object-cover w-full mb-8 rounded-lg aspect-video">
+                <img src="{{ json_decode($page->images)[0] ? asset('storage/' . json_decode($page->images)[0]) : asset('src/images/general/no-image.jpg') }}"
+                    alt="{{ $selected->title }}" class="object-cover w-full mb-8 rounded-lg aspect-video">
                 @endif
 
                 @if ($selected->date)
