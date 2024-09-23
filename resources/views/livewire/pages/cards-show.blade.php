@@ -3,8 +3,8 @@
     <div style="background-color: {{ $page->page_bg_color ?? '#ffffff' }}" class="max-w-2xl py-4 bg-white rounded-lg">
         <div class="p-4">
             @if ($page->images)
-            <img src="{{ asset('storage/' . json_decode($page->images)[0]) }}" alt="{{ $page->title }}"
-                class="object-cover w-full mb-8 rounded-lg aspect-video">
+            <img src="{{ !empty(json_decode($page->images)[0]) ? asset('storage/' . json_decode($page->images)[0]) : asset('src/images/general/no-image.jpg') }}"
+                alt="{{ $page->title }}" class="object-cover w-full mb-8 rounded-lg aspect-video">
             @endif
 
             @if ($page->date)
