@@ -34,20 +34,20 @@ class CardsCreate extends Component
 
     public function submit()
     {
-        try {
-            $this->validate([
-                'title' => 'required|string|max:255',
-                'description' => 'required|string',
-                'slug' => 'required|string|max:255|unique:pages,slug',
-                'date' => 'required|date',
-                'images.*' => 'nullable|image', // Cada imagem com no máximo 1MB
-                'dateBgColor' => 'required|string|max:7',
-                'dateTextColor' => 'required|string|max:7',
-                'titleTextColor' => 'required|string|max:7',
-                'descriptionTextColor' => 'required|string|max:7',
-                'pageBgColor' => 'required|string|max:7',
-            ]);
+        $this->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'slug' => 'nullable|string|max:255|unique:pages,slug',
+            'date' => 'required|date',
+            'images.*' => 'nullable|image', // Cada imagem com no máximo 1MB
+            'dateBgColor' => 'required|string|max:7',
+            'dateTextColor' => 'required|string|max:7',
+            'titleTextColor' => 'required|string|max:7',
+            'descriptionTextColor' => 'required|string|max:7',
+            'pageBgColor' => 'required|string|max:7',
+        ]);
 
+        try {
             // Criação do slug, se necessário
             if (empty($this->slug)) {
                 $this->slug = Str::slug($this->title);

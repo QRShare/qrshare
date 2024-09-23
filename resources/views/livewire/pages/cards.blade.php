@@ -1,16 +1,16 @@
 <div class="container flex flex-col-reverse items-start h-full mx-auto mb-12 mt-28 sm:px-4 md:px-2 lg:px-0 md:flex-row">
     <!-- Main Hero Content -->
-    <div class="flex flex-col flex-1 h-full max-h-full mt-px text-left gap-y-4 ">
+    <div class="flex flex-col flex-1 h-full max-h-full mt-px text-left gap-y-4">
         @if (count($pages))
         @foreach ($pages as $page)
         <div class="flex items-center overflow-hidden bg-white border rounded-lg shadow-sm border-neutral-200/60">
-            <img class="object-cover w-1/3 rounded-lg h-36 aspect-video"
+            <img class="object-cover w-1/3 h-full rounded-lg aspect-square"
                 src="{{ asset('storage/' . json_decode($page->images)[0]) }}" />
-            <div class="p-5">
-                <a href="#_" class="block mb-3">
+            <div class="px-6 py-2">
+                <button wire:click="selectPage({{ $page->id }})" class="block mb-3 text-left">
                     <h5 class="text-xl font-bold leading-none tracking-tight line-clamp-2 text-neutral-900">
                         {{ $page->title }}</h5>
-                </a>
+                </button>
                 <p class="mb-4 text-sm text-neutral-500 line-clamp-3">
                     {{ $page->description }}
                 </p>
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="flex-1 w-full h-full px-6 mt-8 sm:mt-0">
+    <div class="flex-1 w-full h-full pl-6 mt-8 sm:mt-0">
         <div style="background-color: {{ $selected->page_bg_color ?? '#ffffff' }}"
             class="h-full py-4 bg-white border rounded-lg shadow">
             @if ($selected)

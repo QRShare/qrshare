@@ -1,11 +1,11 @@
-<div class="container flex flex-row h-full mx-auto mb-12 mt-28 gap-x-8">
+<div class="container flex flex-col h-full gap-8 mx-auto mb-12 lg:flex-row mt-28">
     <div class="flex-1">
         <form wire:submit.prevent='submit'
             class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
             <div class="px-4 py-6 sm:p-8">
-                <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div class="flex flex-row items-end col-span-full gap-x-6">
-                        <div class="flex-1">
+                <div class="flex flex-col max-w-2xl gap-x-4 gap-y-4">
+                    <div class="grid grid-cols-6 gap-4 col-span-full">
+                        <div class="md:col-span-4 col-span-full xl:col-span-4 lg:col-span-full">
                             <label for="slug" class="block text-sm font-medium leading-6 text-gray-900">
                                 Nome da Página
                             </label>
@@ -25,16 +25,16 @@
                             </div>
                         </div>
 
-                        <div class="relative col-span-2">
-                            <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Data</label>
-                            <div class="mt-2">
+                        <div class="relative md:col-span-2 col-span-full xl:col-span-2 lg:col-span-full">
+                            <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Data *</label>
+                            <div class="relative mt-2">
                                 <div
-                                    class="relative flex pl-1 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                                    class="flex pl-1 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                                     <input type="datetime-local" name="date" id="date" wire:model.lazy='date'
                                         class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" />
-                                    <div class="absolute bottom-0 text-xs text-red-400 translate-y-full">
-                                        @error('date') {{ $message }} @enderror
-                                    </div>
+                                </div>
+                                <div class="absolute bottom-0 text-xs text-red-400 translate-y-full">
+                                    @error('date') {{ $message }} @enderror
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,8 @@
 
                     <div class="flex flex-row items-end col-span-full gap-x-6">
                         <div class="flex-1">
-                            <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Título</label>
+                            <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Título
+                                *</label>
                             <div class="relative mt-2">
                                 <input type="text" name="title" id="title" wire:model.lazy='title' autocomplete="title"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -55,8 +56,8 @@
 
                     <div class="flex flex-row items-end col-span-full gap-x-6">
                         <div class="flex-1">
-                            <label for="description"
-                                class="block text-sm font-medium leading-6 text-gray-900">Mensagem</label>
+                            <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Mensagem
+                                *</label>
                             <div class="relative mt-2">
                                 <textarea id="description" name="description" wire:model.lazy='description' rows="3"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
@@ -68,7 +69,7 @@
                     </div>
 
                     <div class="col-span-full">
-                        <label for="images" class="block text-sm font-medium leading-6 text-gray-900">Images</label>
+                        <label for="images" class="block text-sm font-medium leading-6 text-gray-900">Imagens *</label>
                         <div
                             class="relative flex justify-center px-6 py-10 mt-2 border border-dashed rounded-lg border-gray-900/25">
                             <div class="text-center">
@@ -95,9 +96,9 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row flex-wrap justify-between gap-4 col-span-full">
+                    <div class="flex flex-row flex-wrap gap-4 col-span-full">
                         <div class="flex flex-col items-center justify-center">
-                            <label for="pageBgColor" class="block text-sm leading-6 text-gray-900">
+                            <label for="pageBgColor" class="block text-sm leading-6 text-gray-900 whitespace-nowrap">
                                 Fundo da Página
                             </label>
                             <input type="color" wire:model.live='pageBgColor' name="pageBgColor"
@@ -106,7 +107,7 @@
                         </div>
 
                         <div class="flex flex-col items-center justify-center">
-                            <label for="dateTextColor" class="block text-sm leading-6 text-gray-900">
+                            <label for="dateTextColor" class="block text-sm leading-6 text-gray-900 whitespace-nowrap">
                                 Texto Contador
                             </label>
                             <input type="color" wire:model.live='dateTextColor'
@@ -116,7 +117,7 @@
                         </div>
 
                         <div class="flex flex-col items-center justify-center">
-                            <label for="dateBgColor" class="block text-sm leading-6 text-gray-900">
+                            <label for="dateBgColor" class="block text-sm leading-6 text-gray-900 whitespace-nowrap">
                                 Fundo do Contador
                             </label>
                             <input type="color" wire:model.live='dateBgColor' name="dateBgColor"
@@ -125,7 +126,8 @@
                         </div>
 
                         <div class="flex flex-col items-center justify-center">
-                            <label for="titleTextColor" class="block text-sm leading-6 text-center text-gray-900">
+                            <label for="titleTextColor"
+                                class="block text-sm leading-6 text-center text-gray-900 whitespace-nowrap">
                                 Cor do Título
                             </label>
                             <input type="color" wire:model.live='titleTextColor' name="titleTextColor"
@@ -134,7 +136,8 @@
                         </div>
 
                         <div class="flex flex-col items-center justify-center">
-                            <label for="descriptionTextColor" class="block text-sm leading-6 text-gray-900">
+                            <label for="descriptionTextColor"
+                                class="block text-sm leading-6 text-gray-900 whitespace-nowrap">
                                 Cor da Messagem
                             </label>
                             <input type="color" wire:model.live='descriptionTextColor' name="descriptionTextColor"
@@ -155,6 +158,7 @@
             </div>
         </form>
     </div>
+
     <div class="flex flex-1">
         <div style="background-color: {{ $pageBgColor }}"
             class="flex-1 shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
