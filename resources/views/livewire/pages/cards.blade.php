@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="flex-1 w-full h-full pl-6 mt-8 sm:mt-0">
+    <div class="flex-1 w-full h-full mt-8 md:pl-6 sm:mt-0">
         <div style="background-color: {{ $selected->page_bg_color ?? '#ffffff' }}"
             class="h-full py-4 bg-white border rounded-lg shadow">
             @if ($selected)
