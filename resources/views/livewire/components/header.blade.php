@@ -1,4 +1,4 @@
-<header class="absolute inset-x-0 top-0 z-50" x-data="{ isOpen: false }">
+<header class="absolute inset-x-0 top-0 z-50 px-6" x-data="{ isOpen: false }">
     <nav class="container flex items-center justify-between py-6 mx-auto" aria-label="Global">
         <div class="flex lg:flex-1">
             <x-base.logo type='light' />
