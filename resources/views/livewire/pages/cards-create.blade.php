@@ -1,4 +1,4 @@
-<div class="container flex flex-col h-full gap-8 mx-auto mb-12 lg:flex-row mt-28">
+<div class="container flex flex-col w-screen h-full gap-8 mx-auto mb-12 overflow-x-hidden lg:flex-row mt-28">
     <div class="flex-1">
         <form wire:submit.prevent='submit'
             class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
