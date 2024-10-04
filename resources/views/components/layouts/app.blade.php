@@ -7,13 +7,12 @@
     <title>{{ $title ?? __('QRShare - Build Customizable Pages with Ease') }}</title>
 
     <!-- Define a cor da barra superior no Chrome, Firefox e Edge -->
-    <meta name="theme-color" content="#000000"> <!-- Altere para a cor que preferir -->
+    <meta name="theme-color" content="rgba(0, 0, 0, 0)">
 
     <!-- Define a cor da barra superior no Safari iOS -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- Ou "default", "black" -->
 
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 
     <!-- Meta tags para SEO - Multilíngue (Inglês e Português) -->
