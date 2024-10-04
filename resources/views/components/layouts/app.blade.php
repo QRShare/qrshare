@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? __('QRShare - Build Customizable Pages with Ease') }}</title>
 
+    <!-- Define a cor da barra superior no Chrome, Firefox e Edge -->
+    <meta name="theme-color" content="#000000"> <!-- Altere para a cor que preferir -->
+
+    <!-- Define a cor da barra superior no Safari iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- Ou "default", "black" -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
     <!-- Meta tags para SEO - Multilíngue (Inglês e Português) -->
     <meta name="description"
         content="{{ app()->getLocale() == 'pt' ? 'O QRShare permite aos usuários criar páginas dinâmicas e personalizáveis com facilidade. Gerencie texto, imagens, sliders e conteúdo rico com total controle. Disponível apenas para assinantes ativos, o QRShare oferece páginas personalizadas com funcionalidade de arrastar e soltar.' : 'QRShare allows users to create dynamic and customizable web pages with ease. Manage text, images, sliders, and rich content with full control. Accessible only to active subscribers, QRShare provides personalized pages with simple drag-and-drop functionality.' }}">
