@@ -23,3 +23,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var themeColorMeta = document.getElementById('theme-color-meta');
+        themeColorMeta.setAttribute('content', '{{ $page->page_bg_color ?? '#ffffff' }}');
+    });
+</script>
