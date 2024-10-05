@@ -5,7 +5,7 @@
         @if (count($pages))
         @foreach ($pages as $page)
         <div class="flex items-center overflow-hidden bg-white border rounded-lg shadow-sm border-neutral-200/60">
-            @if(json_decode($page->images)[0])
+            @if(isset(json_decode($page->images)[0]))
             <div class="w-1/3">
                 <img src="{{ config('filesystems.disks.r2.url_public') . json_decode($page->images)[0] }}"
                     alt="{{ $page->title }}" class="object-cover w-full h-full rounded-lg aspect-square">
