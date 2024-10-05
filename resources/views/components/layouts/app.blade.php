@@ -43,6 +43,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $title ?? __('QRShare - Customizable Pages') }}">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <meta name="twitter:description"
         content="{{ app()->getLocale() == 'pt' ? 'Crie páginas personalizadas com facilidade usando o QRShare. Construtor de arrastar e soltar, campos totalmente personalizáveis e muito mais. Disponível apenas para assinantes.' : 'Create personalized web pages with ease using QRShare. Drag-and-drop builder, fully customizable fields, and more. Available only to subscribers.' }}">
