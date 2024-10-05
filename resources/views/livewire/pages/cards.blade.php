@@ -5,10 +5,12 @@
         @if (count($pages))
         @foreach ($pages as $page)
         <div class="flex items-center overflow-hidden bg-white border rounded-lg shadow-sm border-neutral-200/60">
+            @if(json_decode($page->images)[0])
             <div class="w-1/3">
                 <img src="{{ config('filesystems.disks.r2.url_public') . json_decode($page->images)[0] }}"
                     alt="{{ $page->title }}" class="object-cover w-full h-full rounded-lg aspect-square">
             </div>
+            @endif
 
             <div class="flex-1 px-6 py-2">
                 <button wire:click="selectPage({{ $page->id }})" class="block mb-3 text-left">
