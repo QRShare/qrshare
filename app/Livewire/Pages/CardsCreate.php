@@ -8,7 +8,6 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
 use Throwable;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CardsCreate extends Component
@@ -57,7 +56,7 @@ class CardsCreate extends Component
             $imagesPath = [];
             if ($this->images) {
                 foreach ($this->images as $image) {
-                    $imagesPath[] = Storage::disk('public')->put('pages/'.$this->slug, $image); // Salva as imagens na pasta 'pages' no MinIO
+                    $imagesPath[] = Storage::disk('r2')->put('pages/'.$this->slug, $image); // Salva as imagens na pasta 'pages' no MinIO
                 }
             }
 

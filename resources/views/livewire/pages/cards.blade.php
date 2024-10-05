@@ -1,12 +1,16 @@
-<div class="container flex flex-col-reverse items-start h-full mx-auto mb-12 mt-28 sm:px-4 md:px-2 lg:px-0 md:flex-row">
+<div
+    class="container flex flex-col-reverse items-start h-full gap-10 mx-auto mb-12 mt-28 sm:px-4 md:px-2 lg:px-0 md:flex-row">
     <!-- Main Hero Content -->
     <div class="flex flex-col flex-1 h-full max-h-full mt-px text-left gap-y-4">
         @if (count($pages))
         @foreach ($pages as $page)
         <div class="flex items-center overflow-hidden bg-white border rounded-lg shadow-sm border-neutral-200/60">
-            <img class="object-cover w-1/3 h-full rounded-lg aspect-square"
-                src="{{ !empty(json_decode($page->images)[0]) ? asset('storage/' . json_decode($page->images)[0]) : asset('src/images/general/no-image.jpg') }}" />
-            <div class="px-6 py-2">
+            <div class="w-1/3">
+                <img src="{{ config('filesystems.disks.r2.url_public') . json_decode($page->images)[0] }}"
+                    alt="{{ $page->title }}" class="object-cover w-full h-full rounded-lg aspect-square">
+            </div>
+
+            <div class="flex-1 px-6 py-2">
                 <button wire:click="selectPage({{ $page->id }})" class="block mb-3 text-left">
                     <h5 class="text-xl font-bold leading-none tracking-tight line-clamp-2 text-neutral-900">
                         {{ $page->title }}</h5>
@@ -46,14 +50,26 @@
         </div>
     </div>
 
-    <div class="flex-1 w-full h-full mt-8 md:pl-6 sm:mt-0">
+    <div class="flex-1 w-full h-full mt-8 sm:mt-0">
         <div style="background-color: {{ $selected->page_bg_color ?? '#ffffff' }}"
             class="h-full py-4 bg-white border rounded-lg shadow">
             @if ($selected)
             <div class="p-4">
                 @if ($selected->images)
-                <img src="{{ !empty(json_decode($page->images)[0]) ? asset('storage/' . json_decode($page->images)[0]) : asset('src/images/general/no-image.jpg') }}"
-                    alt="{{ $selected->title }}" class="object-cover w-full mb-8 rounded-lg aspect-video">
+                <div class="max-w-[45vw] mb-8 ">
+                    <div class="w-full swiper pagesSlidderSwiper">
+                        <div class="w-full swiper-wrapper">
+                            @foreach(json_decode($selected->images) as $image_item)
+                            <div class="w-full swiper-slide">
+                                <img src="{{ !empty($image_item) ? config('filesystems.disks.r2.url_public') . $image_item : asset('src/images/general/no-image.jpg') }}"
+                                    alt="{{ $page->title }}" class="flex-1 object-cover w-full rounded-lg aspect-video">
+                            </div>
+                            @endforeach
+                        </div>
+                        {{-- <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div> --}}
+                    </div>
+                </div>
                 @endif
 
                 @if ($selected->date)

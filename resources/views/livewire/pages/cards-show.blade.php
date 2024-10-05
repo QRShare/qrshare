@@ -3,8 +3,21 @@
     <div style="background-color: {{ $page->page_bg_color ?? '#ffffff' }}" class="max-w-2xl py-4 bg-white rounded-lg">
         <div class="p-4">
             @if ($page->images)
-            <img src="{{ !empty(json_decode($page->images)[0]) ? asset('storage/' . json_decode($page->images)[0]) : asset('src/images/general/no-image.jpg') }}"
-                alt="{{ $page->title }}" class="object-cover w-full mb-8 rounded-lg aspect-video">
+            <!-- Slider main container -->
+            <div class="swiper pagesSlidderSwiper" data-swiper-autoplay="2000">
+                <div class="swiper-wrapper">
+                    @foreach(json_decode($page->images) as $image)
+                    <div class="mb-8 swiper-slide">
+                        <img src="{{ !empty($image) ? asset(config('filesystems.disks.r2.url_public') . $image) : asset('src/images/general/no-image.jpg') }}"
+                            alt="{{ $page->title }}" class="object-cover w-full rounded-lg aspect-video">
+                    </div>
+                    @endforeach
+                </div>
+                {{-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> --}}
+            </div>
+
+
             @endif
 
             @if ($page->date)

@@ -64,6 +64,7 @@ return [
              'region' => 'us-east-1',
              'bucket' => env('CLOUDFLARE_R2_BUCKET'),
              'url' => env('CLOUDFLARE_R2_URL'),
+             'url_public' => env('CLOUDFLARE_R2_URL_PUBLIC'),
              'visibility' => 'private',
              'endpoint' => env('CLOUDFLARE_R2_ENDPOINT'),
              'use_path_style_endpoint' => env('CLOUDFLARE_R2_USE_PATH_STYLE_ENDPOINT', false),

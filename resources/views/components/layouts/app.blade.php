@@ -51,8 +51,7 @@
     <!-- Fim das meta tags para SEO -->
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/swipper.js'])
     <style>
         [x-cloak] {
             display: none
