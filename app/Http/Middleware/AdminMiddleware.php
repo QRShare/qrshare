@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
+    protected $proxies = '*';
+
     /**
      * Handle an incoming request.
      *
